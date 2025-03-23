@@ -1,0 +1,17 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Modules/CMakeFindDependencyMacro.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Modules/FindPackageMessage.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Modules/FindZLIB.cmake
+C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.30/Modules/SelectLibraryConfigurations.cmake
+C:/Users/ryan/Desktop/pichat/src/CMakeLists.txt
+C:/vcpkg/installed/x64-windows/share/curl/CURLConfig.cmake
+C:/vcpkg/installed/x64-windows/share/curl/CURLConfigVersion.cmake
+C:/vcpkg/installed/x64-windows/share/curl/CURLTargets-debug.cmake
+C:/vcpkg/installed/x64-windows/share/curl/CURLTargets-release.cmake
+C:/vcpkg/installed/x64-windows/share/curl/CURLTargets.cmake
+C:/vcpkg/installed/x64-windows/share/curl/vcpkg-cmake-wrapper.cmake
+C:/vcpkg/installed/x64-windows/share/nlohmann_json/nlohmann_jsonConfig.cmake
+C:/vcpkg/installed/x64-windows/share/nlohmann_json/nlohmann_jsonConfigVersion.cmake
+C:/vcpkg/installed/x64-windows/share/nlohmann_json/nlohmann_jsonTargets.cmake
+C:/vcpkg/installed/x64-windows/share/zlib/vcpkg-cmake-wrapper.cmake

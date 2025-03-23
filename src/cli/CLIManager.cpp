@@ -1,6 +1,6 @@
-#include "cli/CLIManager.h"
-#include "config/ConfigManager.h"
-#include "utils/ErrorHandler.h"
+#include "include/cli/CLIManager.h"
+#include "include/config/ConfigManager.h"
+#include "include/utils/ErrorHandler.h"
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -8,12 +8,11 @@
 
 #ifdef _WIN32
 #include <Windows.h>
-#include <tchar.h>
+#include <ShlObj.h>  // For SHGetFolderPathA and CSIDL_APPDATA
 #else
 #include <unistd.h>
 #include <sys/types.h>
-#include <sys/stat.h>
-#include <signal.h>
+#include <pwd.h>
 #endif
 
 namespace fs = std::filesystem;
@@ -26,7 +25,7 @@ const std::string PID_FILE = [] {
     if (SUCCEEDED(SHGetFolderPathA(NULL, CSIDL_APPDATA, NULL, 0, appData))) {
         return std::string(appData) + "\\PiChat\\pichat.pid";
     }
-    return "pichat.pid";  // Fallback
+    return std::string("pichat.pid");  // Fallback - fixed to return std::string
 #else
     // Unix path
     std::string homeDir = getenv("HOME") ? getenv("HOME") : "";

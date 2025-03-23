@@ -1,0 +1,9 @@
+C:/Users/ryan/Desktop/pichat/build/CMakeFiles/INSTALL.dir
+C:/Users/ryan/Desktop/pichat/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/ryan/Desktop/pichat/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/ryan/Desktop/pichat/build/src/CMakeFiles/pichat_core.dir
+C:/Users/ryan/Desktop/pichat/build/src/CMakeFiles/pichat_cli.dir
+C:/Users/ryan/Desktop/pichat/build/src/CMakeFiles/INSTALL.dir
+C:/Users/ryan/Desktop/pichat/build/Pichat/CMakeFiles/PiChat.dir
+C:/Users/ryan/Desktop/pichat/build/Pichat/CMakeFiles/INSTALL.dir
+C:/Users/ryan/Desktop/pichat/build/Pichat/CMakeFiles/ALL_BUILD.dir
