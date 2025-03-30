@@ -6,6 +6,10 @@
 #include <fstream>
 #include <filesystem>
 
+#ifdef __APPLE__
+#include <mach-o/dyld.h>
+#endif
+
 #ifdef _WIN32
 #include <Windows.h>
 #include <ShlObj.h>  // For SHGetFolderPathA and CSIDL_APPDATA
@@ -13,7 +17,9 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <pwd.h>
+#include <fcntl.h> // For O_RDWR
 #endif
+#include "../../../../../../../../../../Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/signal.h"
 
 namespace fs = std::filesystem;
 
@@ -117,6 +123,42 @@ CLIManager::CLIManager() : appName("pichat") {
                 return 1;
             }
         });
+        registerCommand("--interactive", "Start interactive chat mode",
+            [this](const std::vector<std::string>& args) {
+                std::cout << "Starting PiChat interactive mode. Type 'exit' to quit.\n";
+                std::string input;
+        
+                ConfigManager& config = ConfigManager::getInstance();
+                std::string apiKey = config.getApiKey();
+                if (apiKey.empty()) {
+                    std::cerr << "Error: API key not set. Use --set-key to configure." << std::endl;
+                    return 1;
+                }
+        
+                while (true) {
+                    std::cout << "> ";
+                    std::getline(std::cin, input);
+        
+                    if (input == "exit") break;
+                    if (input.empty()) continue;
+        
+                    // Placeholder: you can replace this with actual DeepSeek API integration
+                    std::cout << "[PiChat response to '" << input << "']" << std::endl;
+                }
+        
+                return 0;
+            });
+        
+        registerCommand("--service", "Run PiChat as a background service",
+            [this](const std::vector<std::string>& args) {
+                std::cout << "PiChat service is running in the background." << std::endl;
+                // Simulated background process loop
+                while (true) {
+                    // std::this_thread::sleep_for(std::chrono::seconds(60));
+                    // This would typically process queued inputs, etc.
+                }
+                return 0;
+            });
 }
 
 CLIManager& CLIManager::getInstance() {
@@ -260,13 +302,21 @@ bool CLIManager::startService() {
 
     return true;
 #else
-    // Unix service start
+    // Unix + Mac service start
     // Get path to executable
     char exePath[PATH_MAX];
-    if (readlink("/proc/self/exe", exePath, sizeof(exePath) - 1) == -1) {
-        std::cerr << "Error: Could not determine executable path" << std::endl;
-        return false;
-    }
+    uint32_t size = sizeof(exePath);
+    #if defined(__APPLE__)
+        if (_NSGetExecutablePath(exePath, &size) != 0) {
+            std::cerr << "Error: Executable path is too long" << std::endl;
+            return false;
+        }
+    #else
+        if (readlink("/proc/self/exe", exePath, sizeof(exePath) - 1) == -1) {
+            std::cerr << "Error: Could not determine executable path" << std::endl;
+            return false;
+        }
+    #endif
 
     // Fork process
     pid_t pid = fork();

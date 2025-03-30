@@ -19,6 +19,7 @@ To build and run PiChat, you'll need:
 - libcurl (for HTTP requests)
 - nlohmann_json library (for JSON parsing)
 - C++17 compatible compiler
+- brew install pkg-config (macOS/Linux)
 
 ## Building the Project
 
@@ -37,7 +38,7 @@ cd vcpkg
 2. Install required packages:
 ```powershell
 .\vcpkg install curl:x64-windows
-.\vcpkg install nlohmann-json:x64-windows
+.\vcpkg install nlohmann-json:x64-windows or ./vcpkg install nlohmann-json --head (macOS/Linux)
 ```
 
 3. Integrate with Visual Studio:
@@ -49,15 +50,20 @@ cd vcpkg
 
 1. Clone the repository:
 ```powershell
-git clone https://github.com/yourusername/pichat.git
+git clone https://github.com/mike-Ry/pichat.git
 cd pichat
 ```
+
+Make sure there is no previous build directory, if so, remove it. 
 
 2. Create a build directory and run CMake:
 ```powershell
 mkdir build
 cd build
-cmake .. -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake
+cmake .. -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake 
+or (macOS/Linux)
+cmake .. -DCMAKE_TOOLCHAIN_FILE=$HOME/vcpkg/scripts/buildsystems/vcpkg.cmake
+
 ```
 
 3. Build the project:
