@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc libpichat_core.a CMakeFiles/pichat_core.dir/config/ConfigManager.cpp.o CMakeFiles/pichat_core.dir/utils/ErrorHandler.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib libpichat_core.a
