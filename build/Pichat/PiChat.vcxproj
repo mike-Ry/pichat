@@ -133,7 +133,7 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
     <Link>
-      <AdditionalDependencies>..\src\Debug\pichat_core.lib;..\src\Debug\pichat_cli.lib;..\src\Debug\pichat_core.lib;C:\vcpkg\installed\x64-windows\debug\lib\libcurl-d.lib;C:\vcpkg\installed\x64-windows\debug\lib\libcurl-d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\src\Debug\pichat_core.lib;..\src\Debug\pichat_cli.lib;..\src\Debug\pichat_voice.lib;..\src\Debug\pichat_core.lib;C:\vcpkg\installed\x64-windows\debug\lib\libcurl-d.lib;ole32.lib;oleaut32.lib;C:\vcpkg\installed\x64-windows\debug\lib\libcurl-d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -195,7 +195,7 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
     <Link>
-      <AdditionalDependencies>..\src\Release\pichat_core.lib;..\src\Release\pichat_cli.lib;..\src\Release\pichat_core.lib;C:\vcpkg\installed\x64-windows\lib\libcurl.lib;C:\vcpkg\installed\x64-windows\lib\libcurl.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\src\Release\pichat_core.lib;..\src\Release\pichat_cli.lib;..\src\Release\pichat_voice.lib;..\src\Release\pichat_core.lib;C:\vcpkg\installed\x64-windows\lib\libcurl.lib;ole32.lib;oleaut32.lib;C:\vcpkg\installed\x64-windows\lib\libcurl.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -257,7 +257,7 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
     <Link>
-      <AdditionalDependencies>..\src\MinSizeRel\pichat_core.lib;..\src\MinSizeRel\pichat_cli.lib;..\src\MinSizeRel\pichat_core.lib;C:\vcpkg\installed\x64-windows\lib\libcurl.lib;C:\vcpkg\installed\x64-windows\lib\libcurl.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\src\MinSizeRel\pichat_core.lib;..\src\MinSizeRel\pichat_cli.lib;..\src\MinSizeRel\pichat_voice.lib;..\src\MinSizeRel\pichat_core.lib;C:\vcpkg\installed\x64-windows\lib\libcurl.lib;ole32.lib;oleaut32.lib;C:\vcpkg\installed\x64-windows\lib\libcurl.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
@@ -318,7 +318,7 @@ exit /b %1
 if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
     <Link>
-      <AdditionalDependencies>..\src\RelWithDebInfo\pichat_core.lib;..\src\RelWithDebInfo\pichat_cli.lib;..\src\RelWithDebInfo\pichat_core.lib;C:\vcpkg\installed\x64-windows\lib\libcurl.lib;C:\vcpkg\installed\x64-windows\lib\libcurl.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\src\RelWithDebInfo\pichat_core.lib;..\src\RelWithDebInfo\pichat_cli.lib;..\src\RelWithDebInfo\pichat_voice.lib;..\src\RelWithDebInfo\pichat_core.lib;C:\vcpkg\installed\x64-windows\lib\libcurl.lib;ole32.lib;oleaut32.lib;C:\vcpkg\installed\x64-windows\lib\libcurl.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -407,6 +407,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ProjectReference Include="C:\Users\ryan\Desktop\pichat\build\src\pichat_core.vcxproj">
       <Project>{B5665BA4-C026-3AE9-8F82-8D90231DC9CA}</Project>
       <Name>pichat_core</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\ryan\Desktop\pichat\build\src\pichat_voice.vcxproj">
+      <Project>{E0B6EA42-0983-33CF-BC3E-389C4CCBD13C}</Project>
+      <Name>pichat_voice</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

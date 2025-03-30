@@ -224,6 +224,9 @@ Pichat_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 Pichat_SOURCE_DIR:STATIC=C:/Users/ryan/Desktop/pichat
 
+//The directory containing a CMake configuration file for PortAudio.
+PortAudio_DIR:PATH=C:/vcpkg/installed/x64-windows/share/portaudio
+
 //Automatically copy dependencies into the output directory for
 // executables.
 VCPKG_APPLOCAL_DEPS:BOOL=ON
@@ -254,6 +257,9 @@ VCPKG_TRACE_FIND_PACKAGE:BOOL=OFF
 
 //Enables messages from the VCPKG toolchain for debugging purposes.
 VCPKG_VERBOSE:BOOL=OFF
+
+//The directory containing a CMake configuration file for Whisper.
+Whisper_DIR:PATH=Whisper_DIR-NOTFOUND
 
 //(experimental) Automatically copy dependencies into the install
 // target directory for executables. Requires CMake 3.14.
@@ -287,6 +293,9 @@ nlohmann_json_DIR:PATH=C:/vcpkg/installed/x64-windows/share/nlohmann_json
 
 //Dependencies for the target
 pichat_cli_LIB_DEPENDS:STATIC=general;pichat_core;
+
+//Dependencies for the target
+pichat_voice_LIB_DEPENDS:STATIC=general;pichat_core;general;ole32;general;oleaut32;
 
 
 ########################

@@ -31,3 +31,34 @@ target_include_directories(pichat_cli PUBLIC
 # Link dependencies
 target_link_libraries(pichat_cli PRIVATE pichat_core)
 target_link_libraries(pichat_core PRIVATE CURL::libcurl nlohmann_json::nlohmann_json)
+
+
+# Voice library
+add_library(pichat_voice
+    voice/VoiceManager.cpp
+    voice/SpeechRecognizer.cpp
+    voice/TextToSpeech.cpp
+    voice/CommandProcessor.cpp
+)
+
+# Include directories
+target_include_directories(pichat_voice PUBLIC 
+    ${CMAKE_CURRENT_SOURCE_DIR}/..
+    ${CMAKE_CURRENT_SOURCE_DIR}/../include
+)
+
+# Link dependencies
+target_link_libraries(pichat_voice PRIVATE 
+    pichat_core
+)
+
+# Windows specific libraries for speech
+if(WIN32)
+    target_link_libraries(pichat_voice PRIVATE 
+        ole32
+        oleaut32
+    )
+endif()
+
+# Define a macro to indicate we're using the simplified voice implementation
+target_compile_definitions(pichat_voice PRIVATE SIMPLIFIED_VOICE_IMPL=1)

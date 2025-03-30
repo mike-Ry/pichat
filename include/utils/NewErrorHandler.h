@@ -4,8 +4,8 @@
 #include <vector>
 #include <mutex>
 
-// Simple enum (without class keyword)
-enum ErrorLevel {
+// 使用 enum class 而不是普通 enum
+enum class ErrorLevel {
     INFO,
     WARNING,
     ERROR,

@@ -1,0 +1,8 @@
+{
+  "name": "pichat",
+  "version": "0.1.0",
+  "dependencies": [
+    "espeak-ng"
+  ],
+  "builtin-baseline": "0000000000000000000000000000000000000000"
+}

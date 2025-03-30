@@ -18,10 +18,11 @@ if(TARGET pichat_core AND TARGET pichat_cli)
   # Main executable
   add_executable(PiChat ${CMAKE_CURRENT_SOURCE_DIR}/../src/main.cpp)
   target_link_libraries(PiChat PRIVATE 
-      pichat_core 
-      pichat_cli
-      CURL::libcurl
-      nlohmann_json::nlohmann_json
+    pichat_core 
+    pichat_cli
+    pichat_voice
+    CURL::libcurl
+    nlohmann_json::nlohmann_json
   )
 
   # Installation rules

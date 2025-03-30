@@ -185,6 +185,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{B5665BA4-C026-3AE9-8F82-8D90231DC9CA}</Project>
       <Name>pichat_core</Name>
     </ProjectReference>
+    <ProjectReference Include="C:\Users\ryan\Desktop\pichat\build\src\pichat_voice.vcxproj">
+      <Project>{E0B6EA42-0983-33CF-BC3E-389C4CCBD13C}</Project>
+      <Name>pichat_voice</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

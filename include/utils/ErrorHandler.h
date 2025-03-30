@@ -4,21 +4,15 @@
 #include <vector>
 #include <mutex>
 
-/**
- * @enum ErrorLevel
- * @brief Enumeration of error severity levels
- */
+// 使用枚举类，避免名称冲突
 enum class ErrorLevel {
-    INFO,
-    WARNING,
-    ERROR,
-    FATAL
+    EL_INFO,
+    EL_WARNING,
+    EL_ERROR,
+    EL_FATAL
 };
 
-/**
- * @struct ErrorRecord
- * @brief Records an error occurrence
- */
+// 错误记录结构
 struct ErrorRecord {
     ErrorLevel level;
     std::string message;
@@ -26,88 +20,49 @@ struct ErrorRecord {
     std::string timestamp;
 };
 
-/**
- * @class ErrorHandler
- * @brief Centralized error handling for the application
- *
- * This class provides methods for logging and handling errors
- * throughout the application.
- */
+// 错误处理类
 class ErrorHandler {
 public:
-    /**
-     * @brief Get the singleton instance
-     * @return Reference to the ErrorHandler instance
-     */
+    // 获取单例实例
     static ErrorHandler& getInstance();
 
-    /**
-     * @brief Log an error
-     * @param level Error severity level
-     * @param message Error message
-     * @param context Additional context information
-     */
-    void logError(ErrorLevel level, const std::string& message, const std::string& context = "");
-
-    /**
-     * @brief Log an info message
-     * @param message Information message
-     * @param context Additional context information
-     */
-    void logInfo(const std::string& message, const std::string& context = "");
-
-    /**
-     * @brief Log a warning message
-     * @param message Warning message
-     * @param context Additional context information
-     */
-    void logWarning(const std::string& message, const std::string& context = "");
-
-    /**
-     * @brief Log an error message
-     * @param message Error message
-     * @param context Additional context information
-     */
+    // 记录错误信息
     void logError(const std::string& message, const std::string& context = "");
 
-    /**
-     * @brief Log a fatal error message
-     * @param message Fatal error message
-     * @param context Additional context information
-     */
+    // 记录指定级别的错误信息
+    void logError(ErrorLevel level, const std::string& message, const std::string& context = "");
+
+    // 记录信息级别的消息
+    void logInfo(const std::string& message, const std::string& context = "");
+
+    // 记录警告级别的消息
+    void logWarning(const std::string& message, const std::string& context = "");
+
+    // 记录致命错误消息
     void logFatal(const std::string& message, const std::string& context = "");
 
-    /**
-     * @brief Get the most recent error
-     * @return The most recent error record, or nullptr if no errors
-     */
+    // 获取最近的错误记录
     const ErrorRecord* getLastError() const;
 
-    /**
-     * @brief Get all logged errors
-     * @return Vector of all error records
-     */
+    // 获取所有错误记录
     std::vector<ErrorRecord> getAllErrors() const;
 
-    /**
-     * @brief Clear all logged errors
-     */
+    // 清除所有错误记录
     void clearErrors();
 
 private:
-    // Private constructor for singleton pattern
+    // 私有构造函数，实现单例模式
     ErrorHandler();
-
-    // Delete copy constructor and assignment operator
+    ~ErrorHandler() = default;
     ErrorHandler(const ErrorHandler&) = delete;
     ErrorHandler& operator=(const ErrorHandler&) = delete;
 
-    // Error records
+    // 错误记录列表
     std::vector<ErrorRecord> errorRecords;
 
-    // Mutex for thread safety
+    // 线程安全互斥锁
     mutable std::mutex errorMutex;
 
-    // Helper functions
+    // 获取当前时间戳
     std::string getCurrentTimestamp() const;
 };
