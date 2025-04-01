@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc libpichat_cli.a CMakeFiles/pichat_cli.dir/cli/CLIManager.cpp.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib libpichat_cli.a

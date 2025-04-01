@@ -1,22 +1,4 @@
-/Users/orenarbel-wood/Desktop/Uni Classes/Year 4/Year 4 Sem 2/CS3307B/pichat/build/CMakeFiles/edit_cache.dir
-/Users/orenarbel-wood/Desktop/Uni Classes/Year 4/Year 4 Sem 2/CS3307B/pichat/build/CMakeFiles/rebuild_cache.dir
-/Users/orenarbel-wood/Desktop/Uni Classes/Year 4/Year 4 Sem 2/CS3307B/pichat/build/CMakeFiles/list_install_components.dir
-/Users/orenarbel-wood/Desktop/Uni Classes/Year 4/Year 4 Sem 2/CS3307B/pichat/build/CMakeFiles/install.dir
-/Users/orenarbel-wood/Desktop/Uni Classes/Year 4/Year 4 Sem 2/CS3307B/pichat/build/CMakeFiles/install/local.dir
-/Users/orenarbel-wood/Desktop/Uni Classes/Year 4/Year 4 Sem 2/CS3307B/pichat/build/CMakeFiles/install/strip.dir
-/Users/orenarbel-wood/Desktop/Uni Classes/Year 4/Year 4 Sem 2/CS3307B/pichat/build/src/CMakeFiles/pichat_core.dir
-/Users/orenarbel-wood/Desktop/Uni Classes/Year 4/Year 4 Sem 2/CS3307B/pichat/build/src/CMakeFiles/pichat_cli.dir
-/Users/orenarbel-wood/Desktop/Uni Classes/Year 4/Year 4 Sem 2/CS3307B/pichat/build/src/CMakeFiles/pichat_voice.dir
-/Users/orenarbel-wood/Desktop/Uni Classes/Year 4/Year 4 Sem 2/CS3307B/pichat/build/src/CMakeFiles/edit_cache.dir
-/Users/orenarbel-wood/Desktop/Uni Classes/Year 4/Year 4 Sem 2/CS3307B/pichat/build/src/CMakeFiles/rebuild_cache.dir
-/Users/orenarbel-wood/Desktop/Uni Classes/Year 4/Year 4 Sem 2/CS3307B/pichat/build/src/CMakeFiles/list_install_components.dir
-/Users/orenarbel-wood/Desktop/Uni Classes/Year 4/Year 4 Sem 2/CS3307B/pichat/build/src/CMakeFiles/install.dir
-/Users/orenarbel-wood/Desktop/Uni Classes/Year 4/Year 4 Sem 2/CS3307B/pichat/build/src/CMakeFiles/install/local.dir
-/Users/orenarbel-wood/Desktop/Uni Classes/Year 4/Year 4 Sem 2/CS3307B/pichat/build/src/CMakeFiles/install/strip.dir
-/Users/orenarbel-wood/Desktop/Uni Classes/Year 4/Year 4 Sem 2/CS3307B/pichat/build/Pichat/CMakeFiles/PiChat.dir
-/Users/orenarbel-wood/Desktop/Uni Classes/Year 4/Year 4 Sem 2/CS3307B/pichat/build/Pichat/CMakeFiles/edit_cache.dir
-/Users/orenarbel-wood/Desktop/Uni Classes/Year 4/Year 4 Sem 2/CS3307B/pichat/build/Pichat/CMakeFiles/rebuild_cache.dir
-/Users/orenarbel-wood/Desktop/Uni Classes/Year 4/Year 4 Sem 2/CS3307B/pichat/build/Pichat/CMakeFiles/list_install_components.dir
-/Users/orenarbel-wood/Desktop/Uni Classes/Year 4/Year 4 Sem 2/CS3307B/pichat/build/Pichat/CMakeFiles/install.dir
-/Users/orenarbel-wood/Desktop/Uni Classes/Year 4/Year 4 Sem 2/CS3307B/pichat/build/Pichat/CMakeFiles/install/local.dir
-/Users/orenarbel-wood/Desktop/Uni Classes/Year 4/Year 4 Sem 2/CS3307B/pichat/build/Pichat/CMakeFiles/install/strip.dir
+C:/Users/ryan/Desktop/pichat/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/ryan/Desktop/pichat/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/ryan/Desktop/pichat/build/src/CMakeFiles/pichat.dir
+C:/Users/ryan/Desktop/pichat/build/Pichat/CMakeFiles/ALL_BUILD.dir

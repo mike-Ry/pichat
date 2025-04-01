@@ -173,21 +173,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\ryan\Desktop\pichat\build\Pichat\PiChat.vcxproj">
-      <Project>{1C110699-E97B-3F87-8506-459B3C3E3391}</Project>
-      <Name>PiChat</Name>
-    </ProjectReference>
-    <ProjectReference Include="C:\Users\ryan\Desktop\pichat\build\src\pichat_cli.vcxproj">
-      <Project>{EAD846ED-119B-39E8-9319-9A990F4B75F7}</Project>
-      <Name>pichat_cli</Name>
-    </ProjectReference>
-    <ProjectReference Include="C:\Users\ryan\Desktop\pichat\build\src\pichat_core.vcxproj">
-      <Project>{B5665BA4-C026-3AE9-8F82-8D90231DC9CA}</Project>
-      <Name>pichat_core</Name>
-    </ProjectReference>
-    <ProjectReference Include="C:\Users\ryan\Desktop\pichat\build\src\pichat_voice.vcxproj">
-      <Project>{E0B6EA42-0983-33CF-BC3E-389C4CCBD13C}</Project>
-      <Name>pichat_voice</Name>
+    <ProjectReference Include="C:\Users\ryan\Desktop\pichat\build\src\pichat.vcxproj">
+      <Project>{FCB4B4D3-9FB8-3D27-8CB7-CB596FE5D48A}</Project>
+      <Name>pichat</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

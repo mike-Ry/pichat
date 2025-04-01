@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc libpichat_voice.a CMakeFiles/pichat_voice.dir/voice/VoiceManager.cpp.o CMakeFiles/pichat_voice.dir/voice/SpeechRecognizer.cpp.o CMakeFiles/pichat_voice.dir/voice/TextToSpeech.cpp.o CMakeFiles/pichat_voice.dir/voice/CommandProcessor.cpp.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib libpichat_voice.a

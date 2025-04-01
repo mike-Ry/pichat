@@ -19,8 +19,7 @@
 #include <pwd.h>
 #include <fcntl.h> // For O_RDWR
 #endif
-#include "../../../../../../../../../../Library/Developer/CommandLineTools/SDKs/MacOSX15.2.sdk/usr/include/signal.h"
-
+#include <signal.h>
 namespace fs = std::filesystem;
 
 // Process ID file

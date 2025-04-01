@@ -152,4 +152,3 @@ std::string ErrorHandler::getCurrentTimestamp() const {
     ss << std::put_time(&timeinfo, "%Y-%m-%d %H:%M:%S");
     return ss.str();
 }
-vo

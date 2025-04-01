@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\ryan\Desktop\pichat\src\config\ConfigManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ryan\Desktop\pichat\src\utils\ErrorHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ryan\Desktop\pichat\src\utils\DeepSeekAPI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ryan\Desktop\pichat\src\utils\DeepSeekChatAPI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ryan\Desktop\pichat\src\cli\CLIManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ryan\Desktop\pichat\src\voice\VoiceManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ryan\Desktop\pichat\src\voice\SpeechRecognizer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ryan\Desktop\pichat\src\voice\TextToSpeech.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ryan\Desktop\pichat\src\voice\CommandProcessor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ryan\Desktop\pichat\src\gui\MainWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ryan\Desktop\pichat\src\gui\SettingsDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ryan\Desktop\pichat\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ryan\Desktop\pichat\build\moc\moc_MainWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ryan\Desktop\pichat\build\moc\moc_SettingsDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\ryan\Desktop\pichat\build\moc\moc_DeepSeekAPI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\ryan\Desktop\pichat\build\src\ui_MainWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\ryan\Desktop\pichat\build\src\ui_SettingsDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\ryan\Desktop\pichat\build\CMakeFiles\2280df8df5a6d3d07f908723c5bd48b0\moc_MainWindow.cpp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\ryan\Desktop\pichat\build\CMakeFiles\2280df8df5a6d3d07f908723c5bd48b0\moc_SettingsDialog.cpp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\ryan\Desktop\pichat\build\CMakeFiles\2280df8df5a6d3d07f908723c5bd48b0\moc_DeepSeekAPI.cpp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\ryan\Desktop\pichat\src\gui\MainWindow.ui" />
+    <CustomBuild Include="C:\Users\ryan\Desktop\pichat\src\gui\SettingsDialog.ui" />
+    <CustomBuild Include="C:\Users\ryan\Desktop\pichat\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="C:\vcpkg\installed\x64-windows\share\nlohmann_json\nlohmann_json.natvis" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{AA818CC0-5567-3FE5-969F-C0ED19A00E35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{144DC6DC-246A-3A5A-9878-F627519AE3FC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{F8CE741F-6E23-31B5-BCBE-7533D0B3DE33}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

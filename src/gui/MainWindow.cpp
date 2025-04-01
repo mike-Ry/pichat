@@ -1,42 +1,74 @@
-#include "include/gui/MainWindow.h"
+﻿#include "include/gui/MainWindow.h"
 #include "ui_MainWindow.h"
 #include "include/gui/SettingsDialog.h"
-#include "include/config/ConfigManager.h"
-#include <QMessageBox>
-#include <QTime>
 #include <QScrollBar>
-#include <QSettings>
-#include <thread>
+#include <QKeyEvent>
+#include <QMessageBox>
 
-MainWindow::MainWindow(QWidget* parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
-    , api(new DeepSeekAPI()) {
-
+MainWindow::MainWindow(QWidget* parent) :
+    QMainWindow(parent),
+    ui(new Ui::MainWindow),
+    api(new DeepSeekAPI(this))
+{
     ui->setupUi(this);
     setupConnections();
-    loadSettings();
 
-    // Set window title
-    setWindowTitle("PiChat - DeepSeek AI Chat Interface");
-
-    // Initialize API with key from config
-    ConfigManager& config = ConfigManager::getInstance();
-    api->setApiKey(config.getApiKey());
+    // Display welcome message
+    appendMessage("PiChat", "Welcome to PiChat! How can I help you today?");
 }
 
-MainWindow::~MainWindow() = default;
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
 
 void MainWindow::setupConnections() {
-    // Connect enter key in messageInput to send button
-    connect(ui->messageInput, &QLineEdit::returnPressed, this, &MainWindow::on_sendButton_clicked);
+    // Connect send button
+    connect(ui->sendButton, &QPushButton::clicked, this, &MainWindow::on_sendButton_clicked);
+
+    // Connect API response signal
+    connect(api, &DeepSeekAPI::responseReceived, this, &MainWindow::onResponseReceived);
+
+    // Connect new chat button
+    connect(ui->newChatButton, &QPushButton::clicked, this, [this]() {
+        chatHistory.clear();
+        ui->chatDisplay->clear();
+        appendMessage("PiChat", "Starting a new conversation. How can I help you?");
+        });
+
+    // Connect settings button
+    connect(ui->settingsButton, &QPushButton::clicked, this, &MainWindow::on_actionSettings_triggered);
+
+    // Connect menu actions
+    connect(ui->actionNew_Chat, &QAction::triggered, ui->newChatButton, &QPushButton::click);
+    connect(ui->actionSettings, &QAction::triggered, this, &MainWindow::on_actionSettings_triggered);
+    connect(ui->actionExit, &QAction::triggered, this, &QMainWindow::close);
+
+    // Connect about action
+    connect(ui->actionAbout, &QAction::triggered, this, [this]() {
+        QMessageBox::about(this, "About PiChat",
+            "PiChat v1.0\n\nAn intelligent chat assistant powered by DeepSeek AI.\n\n"
+            "(C) 2023 PiChat Team");
+        });
+
+    // Monitor input text for height adjustments
+    connect(ui->messageInput, &QTextEdit::textChanged, this, [this]() {
+        // Limit text input area height
+        if (ui->messageInput->document()->size().height() > 80) {
+            ui->messageInput->setMaximumHeight(100);
+        }
+        else {
+            ui->messageInput->setMaximumHeight(ui->messageInput->document()->size().height() + 20);
+        }
+        });
+
+    // Install event filter for Enter key handling
+    ui->messageInput->installEventFilter(this);
 }
 
 void MainWindow::on_sendButton_clicked() {
-    QString message = ui->messageInput->text().trimmed();
-    if (message.isEmpty()) {
-        return;
-    }
+    QString message = ui->messageInput->toPlainText().trimmed();
+    if (message.isEmpty()) return;
 
     // Display user message
     appendMessage("You", message);
@@ -44,108 +76,61 @@ void MainWindow::on_sendButton_clicked() {
     // Clear input field
     ui->messageInput->clear();
 
-    // Add to chat history
-    std::string userMessage = message.toStdString();
-    chatHistory.emplace_back("user", userMessage);
+    // Send message to API
+    api->sendMessage(message.toStdString(), chatHistory);
 
-    // Show "Thinking..." indicator
-    ui->statusBar->showMessage("DeepSeek AI is thinking...");
-
-    // Send message to API in a separate thread
-    std::thread apiThread([this, userMessage]() {
-        try {
-            std::string response = api->sendMessage(chatHistory);
-
-            // Add to chat history
-            chatHistory.emplace_back("assistant", response);
-
-            // Update UI in the main thread
-            QMetaObject::invokeMethod(this, "onResponseReceived",
-                Q::QueuedConnection,
-                Q_ARG(std::string, response));
-        }
-        catch (const std::exception& e) {
-            QString errorMsg = "Error: " + QString::fromStdString(e.what());
-            QMetaObject::invokeMethod(this, "appendMessage",
-                Q::QueuedConnection,
-                Q_ARG(QString, "System"),
-                Q_ARG(QString, errorMsg));
-            QMetaObject::invokeMethod(ui->statusBar, "clearMessage", Q::QueuedConnection);
-        }
-        });
-
-    // Detach thread to run independently
-    apiThread.detach();
+    // Update history for API
+    chatHistory.push_back(Message("user", message.toStdString()));
 }
 
-void MainWindow::onResponseReceived(const std::string& response) {
-    // Clear thinking status
-    ui->statusBar->clearMessage();
+void MainWindow::onResponseReceived(const QString& response) {
+    // 显示助理回复 - 现在直接使用QString，无需转换
+    appendMessage("PiChat", response);
 
-    // Display assistant message
-    appendMessage("DeepSeek AI", QString::fromStdString(response));
+    // 更新历史记录
+    chatHistory.push_back(Message("assistant", response.toStdString()));
 }
-
 void MainWindow::appendMessage(const QString& sender, const QString& message) {
-    // Format timestamp
-    QString timestamp = QTime::currentTime().toString("[hh:mm:ss]");
+    QTextCursor cursor(ui->chatDisplay->document());
+    cursor.movePosition(QTextCursor::End);
 
-    // Format message
-    QString formattedMsg;
+    QTextBlockFormat blockFormat;
+    blockFormat.setTopMargin(10);
+    cursor.insertBlock(blockFormat);
+
+    QTextCharFormat senderFormat;
+    senderFormat.setFontWeight(QFont::Bold);
+
+    // 根据发送者设置不同的文本颜色
     if (sender == "You") {
-        formattedMsg = QString("<div style='margin-bottom:5px;'><span style='color:blue;font-weight:bold;'>%1 %2:</span> %3</div>")
-            .arg(timestamp, sender, message.toHtmlEscaped());
-    }
-    else if (sender == "DeepSeek AI") {
-        formattedMsg = QString("<div style='margin-bottom:5px;'><span style='color:green;font-weight:bold;'>%1 %2:</span> %3</div>")
-            .arg(timestamp, sender, message.toHtmlEscaped());
+        senderFormat.setForeground(QColor(42, 130, 218));
     }
     else {
-        formattedMsg = QString("<div style='margin-bottom:5px;'><span style='color:red;font-weight:bold;'>%1 %2:</span> %3</div>")
-            .arg(timestamp, sender, message.toHtmlEscaped());
+        senderFormat.setForeground(QColor(0, 170, 127));
     }
 
-    // Append to chat display
-    ui->chatDisplay->append(formattedMsg);
+    cursor.insertText(sender + ": ", senderFormat);
 
-    // Scroll to bottom
-    QScrollBar* scrollbar = ui->chatDisplay->verticalScrollBar();
-    scrollbar->setValue(scrollbar->maximum());
+    QTextCharFormat messageFormat;
+    cursor.insertText(message, messageFormat);
+
+    // 滚动到最新消息
+    ui->chatDisplay->verticalScrollBar()->setValue(ui->chatDisplay->verticalScrollBar()->maximum());
+}
+
+bool MainWindow::eventFilter(QObject* obj, QEvent* event) {
+    if (obj == ui->messageInput && event->type() == QEvent::KeyPress) {
+        QKeyEvent* keyEvent = static_cast<QKeyEvent*>(event);
+        if (keyEvent->key() == Qt::Key_Return && !(keyEvent->modifiers() & Qt::ShiftModifier)) {
+            on_sendButton_clicked();
+            return true;
+        }
+    }
+    return QMainWindow::eventFilter(obj, event);
 }
 
 void MainWindow::on_actionSettings_triggered() {
+    // Open settings dialog
     SettingsDialog dialog(this);
-    if (dialog.exec() == QDialog::Accepted) {
-        // Reload settings if dialog was accepted
-        loadSettings();
-    }
-}
-
-void MainWindow::on_actionClear_triggered() {
-    // Clear chat display
-    ui->chatDisplay->clear();
-
-    // Clear chat history
-    chatHistory.clear();
-}
-
-void MainWindow::on_actionExit_triggered() {
-    close();
-}
-
-void MainWindow::loadSettings() {
-    ConfigManager& config = ConfigManager::getInstance();
-    api->setApiKey(config.getApiKey());
-
-    // Load window settings
-    QSettings settings("PiChat", "GUI");
-    if (settings.contains("mainWindow/geometry")) {
-        restoreGeometry(settings.value("mainWindow/geometry").toByteArray());
-    }
-}
-
-void MainWindow::saveSettings() {
-    // Save window settings
-    QSettings settings("PiChat", "GUI");
-    settings.setValue("mainWindow/geometry", saveGeometry());
+    dialog.exec();
 }

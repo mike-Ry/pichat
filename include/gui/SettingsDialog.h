@@ -1,7 +1,8 @@
+// include/gui/SettingsDialog.h
 #pragma once
 
 #include <QDialog>
-#include <memory>
+#include <QString>
 
 namespace Ui {
     class SettingsDialog;
@@ -15,9 +16,11 @@ public:
     ~SettingsDialog();
 
 private slots:
-    void on_buttonBox_accepted();
-    void on_buttonBox_rejected();
+    void on_saveButton_clicked();
+    void on_cancelButton_clicked();
 
 private:
-    std::unique_ptr<Ui::SettingsDialog> ui;
+    Ui::SettingsDialog* ui;
+    void loadSettings();
+    void saveSettings();
 };

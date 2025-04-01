@@ -1,8 +1,14 @@
+// include/gui/MainWindow.h
 #pragma once
 
 #include <QMainWindow>
-#include <memory>
-#include "../utils/DeepSeekAPI.h"
+#include <QString>
+#include <QVector>
+#include <QMessageBox>
+#include "include/common/Message.h"
+#include "include/utils/DeepSeekAPI.h"
+
+class SettingsDialog;
 
 namespace Ui {
     class MainWindow;
@@ -15,20 +21,20 @@ public:
     explicit MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
 
+    void appendMessage(const QString& sender, const QString& message);
+
 private slots:
     void on_sendButton_clicked();
+    void onResponseReceived(const QString& response);
     void on_actionSettings_triggered();
-    void on_actionClear_triggered();
-    void on_actionExit_triggered();
-    void onResponseReceived(const std::string& response);
+
+protected:
+    bool eventFilter(QObject* obj, QEvent* event) override;
 
 private:
-    std::unique_ptr<Ui::MainWindow> ui;
-    std::unique_ptr<DeepSeekAPI> api;
-    std::vector<std::pair<std::string, std::string>> chatHistory;
-
     void setupConnections();
-    void appendMessage(const QString& sender, const QString& message);
-    void loadSettings();
-    void saveSettings();
+
+    Ui::MainWindow* ui;
+    DeepSeekAPI* api;
+    std::vector<Message> chatHistory;
 };
